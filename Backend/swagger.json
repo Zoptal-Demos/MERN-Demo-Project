@@ -1,0 +1,1252 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Real Estate",
+    "description": "A Real Estate project with multiple roles",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "admin@realestate.com"
+    },
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "APIs about user"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Register API",
+        "description": "Add a new user",
+        "requestBody": {
+          "description": "Create a new pet in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "country_code": {
+                    "type": "string"
+                  },
+                  "contact": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  },
+                  "about": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "USER",
+                      "AGENT"
+                    ]
+                  },
+                  "device_token": {
+                    "type": "string"
+                  },
+                  "device_type": {
+                    "type": "string"
+                  },
+                  "app_version": {
+                    "type": "string"
+                  },
+                  "device_model": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/verifyOtp": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Register API",
+        "description": "Verify Otp",
+        "requestBody": {
+          "description": "Verifying otp",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Login API",
+        "description": "Login a registered user",
+        "requestBody": {
+          "description": "Login API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  },
+                  "login_type": {
+                    "type": "string",
+                    "enum": [
+                      "NORMAL"
+                    ]
+                  },
+                  "device_token": {
+                    "type": "string"
+                  },
+                  "device_type": {
+                    "type": "string"
+                  },
+                  "app_version": {
+                    "type": "string"
+                  },
+                  "device_model": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/updateLicense": {
+      "patch": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update license API",
+        "description": "update a license",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "license_number": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "city": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "zipcode": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "address": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "default": ""
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "default": ""
+                  },
+                  "company_details": {
+                    "type": {
+                      "name": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "website": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "contact": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "address": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "latitude": {
+                        "type": "number",
+                        "default": ""
+                      },
+                      "longitude": {
+                        "type": "number",
+                        "default": ""
+                      },
+                      "city": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "zipcode": {
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "400": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    },
+    "/user/socialLogin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Social Login API",
+        "description": "Add a new user",
+        "requestBody": {
+          "description": "Social Login API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "USER",
+                      "AGENT"
+                    ]
+                  },
+                  "login_type": {
+                    "type": "string",
+                    "enum": [
+                      "GOOGLE",
+                      "FACEBOOK",
+                      "NORMAL"
+                    ]
+                  },
+                  "device_token": {
+                    "type": "string"
+                  },
+                  "device_type": {
+                    "type": "string"
+                  },
+                  "app_version": {
+                    "type": "string"
+                  },
+                  "device_model": {
+                    "type": "string"
+                  },
+                  "social_id": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/recoverAccount": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Recover account API",
+        "description": "Recover Account",
+        "requestBody": {
+          "description": "Recover account API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/verifyChangePassword": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "verify and recover account API",
+        "description": "verify and recover Account",
+        "requestBody": {
+          "description": "verify and recover account API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/addProperty": {
+      "post": {
+        "tags": [
+          "property"
+        ],
+        "summary": "add a property",
+        "description": "Must include images",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Must include images",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "no_of_bedrooms": {
+                    "type": "number"
+                  },
+                  "no_of_bathrooms": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "area_sqft": {
+                    "type": "number"
+                  },
+                  "property_type": {
+                    "type": "string"
+                  },
+                  "gas": {
+                    "type": "number"
+                  },
+                  "swimming_pool": {
+                    "type": "number"
+                  },
+                  "air_conditioning": {
+                    "type": "number"
+                  },
+                  "heating": {
+                    "type": "number"
+                  },
+                  "lot_size": {
+                    "type": "number"
+                  },
+                  "hoa_fee": {
+                    "type": "number"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "zipcode": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "guidelines": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
+                  },
+                  "attachments": {
+                    "type": "array",
+                    "items": {
+                      "type": "file"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/getMyProperities": {
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "summary": "get properties",
+        "description": "must enter skip and limit",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            },
+            "required": true
+          },
+          {
+            "name": "isHidden",
+            "in": "query",
+            "description": "true for hidden properties false for visible properties",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/getAllProperities": {
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "summary": "get all properties",
+        "description": "must enter skip and limit",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            },
+            "required": true
+          },
+          {
+            "name": "isFiltered",
+            "in": "query",
+            "description": "is filtered is required",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "required": true
+          },
+          {
+            "name": "sqft_min",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "sqft_max",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "lot_size_min",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "lot_size_max",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "year_built_min",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "year_built_max",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "hoa_fee",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "swimming_pool",
+            "in": "query",
+            "description": "select true or false",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "required": false
+          },
+          {
+            "name": "air_conditioner",
+            "in": "query",
+            "description": "select true or false",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "required": false
+          },
+          {
+            "name": "heating",
+            "in": "query",
+            "description": "select true or false",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "required": false
+          },
+          {
+            "name": "gas",
+            "in": "query",
+            "description": "select true or false",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "required": false
+          },
+          {
+            "name": "for",
+            "in": "query",
+            "description": "enter a value",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "required": false
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "enter a value",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "required": false
+          },
+          {
+            "name": "range_from",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "range_to",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": false
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "description": "enter a value",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "required": false
+          },
+          {
+            "name": "zipcode",
+            "in": "query",
+            "description": "enter a value",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/getPropertyDetails/{propertyid}": {
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "summary": "get property details",
+        "description": "must pass id in params",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "propertyid",
+            "in": "path",
+            "description": "enter an id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/comments": {
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "summary": "get all property comments",
+        "description": "must enter skip and limit",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "X token is required",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "enter a number",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "propertyId is required",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/addComment": {
+      "post": {
+        "tags": [
+          "property"
+        ],
+        "summary": "add comment to properties",
+        "description": "body is required",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "add comment API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string"
+                  },
+                  "propertyId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/editComment/{id}": {
+      "patch": {
+        "tags": [
+          "property"
+        ],
+        "summary": "edit comment to properties",
+        "description": "comment and id is required",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "add comment API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/deleteComment/{id}": {
+      "delete": {
+        "tags": [
+          "property"
+        ],
+        "summary": "delete comment to properties",
+        "description": "id is required",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/hideShowProperty/{propertyid}": {
+      "patch": {
+        "tags": [
+          "property"
+        ],
+        "summary": "hdie/show property details",
+        "description": "must pass x_token",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "propertyid",
+            "in": "path",
+            "description": "enter an id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/property/updatePage/{type}": {
+      "patch": {
+        "tags": [
+          "page"
+        ],
+        "summary": "edit your content",
+        "description": "type is required",
+        "parameters": [
+          {
+            "name": "x_token",
+            "in": "header",
+            "description": "This is description",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "This is description",
+            "schema": {
+              "type": "number",
+              "enum": [
+                1,
+                2,
+                3
+              ]
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "add comment API",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+    
+  }
+}
